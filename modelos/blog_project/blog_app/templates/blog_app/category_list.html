@@ -1,0 +1,16 @@
+{% extends "blog_app/base.html" %}
+
+{% block content %}
+<h2>Categoría: {{ selected.name }}</h2>
+
+{% for article in articles %}
+    <div>
+        <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+        <p>{{ article.content|truncatechars:150 }}</p>
+    </div>
+{% empty %}
+    <p>No hay artículos en esta categoría.</p>
+{% endfor %}
+
+<a href="{% url 'home' %}">Volver</a>
+{% endblock %}
