@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
 ]
 
 MIDDLEWARE = [
@@ -115,8 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES = [BASE_DIR / 'static']
-STATIC_ROOT = '../blog/staticfiles/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = '../staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -124,4 +125,4 @@ STATIC_ROOT = '../blog/staticfiles/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '../blog/media'
+MEDIA_ROOT = BASE_DIR.parent / "media"
