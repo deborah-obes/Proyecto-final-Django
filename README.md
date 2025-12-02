@@ -112,41 +112,77 @@ python manage.py migrate
 
 
 Proyecto-final-Django/
+
 │
+
 ├── blog/
+
 │   ├── migrations/
+
 │   ├── templates/blog/
+
 │   └── models.py
+
 │
+
 ├── category/
+
 │   ├── templates/category/
+
 │   └── models.py
+
 │
+
 ├── comentario/
+
 │   ├── templates/comentario/
+
 │   └── models.py
+
 │
+
 ├── crud_usuario/
+
 │   ├── templates/crud_usuario/
+
 │   └── views.py
+
 │
+
 ├── inicio/
+
 │   ├── templates/inicio/
+
 │   └── views.py
+
 │
+
 ├── pages/
+
 │   ├── templates/pages/
+
 │   └── views.py
+
 │
+
 ├── usuario/
+
 │   ├── templates/usuario/
+
 │   └── models.py
+
 │
+
 ├── templates/        # Plantillas globales
+
 ├── static/           # CSS, imágenes, etc.
+
 ├── requirements.txt
+
 ├── manage.py
+
 └── db.sqlite3
+
 
 🤝 Proyecto Final desarrollado por Comision#8 / Grupo#4 - Colaboradores:
 
