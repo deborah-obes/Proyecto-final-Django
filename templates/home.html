@@ -20,25 +20,68 @@
     <nav class="custom-navbar">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <ul class="nav">
+           <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Artículos</a>
+                    <a class="nav-link" href="{% url 'apps.articulo:articulos' %}">Artículos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Otros</a>
-                </li>
+                    <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'apps.usuario:listUsuario' %}">Usuarios</a>
+                        </li>
+                    {% else %}
+                        {% for group in user.groups.all %}
+                            {% if group.name == "Colaborador" %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'apps.usuario:listUsuario' %}">Usuarios</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+
             </ul>
 
-            <a class="btn-gradient" href="#">Regístrate</a>
+            {% if user.is_authenticated %}
+        
+
+            <!-- BOTÓN DE CERRAR SESIÓN -->
+            <form class="nav-icon position-relative text-decoration-none"
+                method="post"
+                action="{% url 'apps.usuario:logout' %}">
+                {% csrf_token %}
+                <button type="submit">
+                    <span class="position-absolute top-200 left-100 translate-middle badge rounded-pill bg-light text-dark">
+                        {{ user.username }}: Cerrar Sesión
+                    </span>
+                </button>
+            </form>
+
+        {% else %}
+
+            <!-- BOTÓN DE INICIAR SESIÓN -->
+            <a class="nav-icon position-relative text-decoration-none"
+            href="{% url 'apps.usuario:login' %}?next={{ request.path }}">
+                <span class="position-absolute top-200 left-100 translate-middle badge rounded-pill bg-light text-dark">
+                    Iniciar Sesión
+                </span>
+                    
+            </a>
+
+        {% endif %}
+
         </div>
     </nav>
 
+    {% block hero_section %}
     <!-- CAROUSEL -->
     <div id="carouselNoticias" class="carousel slide" data-bs-ride="carousel">
         
@@ -88,16 +131,24 @@
 
     <!-- HERO -->
     <section class="hero">
-        <h1>Bienvenidos</h1>
-        <button class="btn-start">Comencemos</button>
-    </section>
+        <h3>Bienvenidos a este espacio donde la tecnología cobra vida</h3>
+        <p>Acá vas a encontrar las últimas novedades del mundo tech: innovación, 
+        inteligencia artificial, análisis de tendencias, lanzamientos, herramientas y 
+        todo lo que necesitás para mantenerte al día en un entorno que evoluciona a una 
+        velocidad increíble. Este blog está pensado para curiosos, profesionales y apasionados 
+        que disfrutan explorar cómo la tecnología transforma nuestro día a día. 
+        <span>¡Gracias por ser parte de esta comunidad!</span>
+        </p>
+        </section>
+    {% endblock %}
+    
 
    <!-- CONTENIDO DINÁMICO -->
     <main class="container mt-5">
 
         {% block content %}
 
-        {% for articulo in articulos %}
+         {% for articulo in articulos %}
         <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -122,8 +173,8 @@
 
         {% endblock %}
 
-    </main>
 
+    </main>
 
 
     <!-- FOOTER -->
@@ -176,7 +227,15 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Sweetalert -->
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
 
+    <!-- Js personalizados-->
+    <script src="{% static 'js/eliminarArticulos.js' %}"></script>
+    <script src="{% static 'js/eliminarComentario.js' %}"></script>
+    <script src="{% static 'js/eliminarCategoria.js' %}"></script>
+    <script src="{% static 'js/eliminarUsuario.js' %}"></script>
     {% block scripts %}
     {% endblock %}
 

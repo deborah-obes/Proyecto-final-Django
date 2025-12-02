@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% load static %}
+
+
+{% block hero_section %}{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/listaPorCategoria.css' %}">
+
+<section class="articulos-section">
+    <div class="container">
+        <h1 class="titulo-seccion">Artículos por categoría</h1>
+        <p class="descripcion-seccion">
+            Explorá los artículos publicados dentro de esta categoría.
+        </p>
+
+        <div class="grid-articulos">
+            {% for articulo in articulos %}
+            <div class="card-articulo">
+
+                {% if articulo.imagen %}
+                <img class="card-img" src="{{ articulo.imagen.url }}" alt="{{ articulo.titulo }}">
+                {% else %}
+                <img class="card-img" src="{% static 'img/default.jpg' %}" alt="Imagen no disponible">
+                {% endif %}
+
+                <div class="card-info">
+                    <h3 class="card-titulo">{{ articulo.titulo|capfirst }}</h3>
+
+                    <a class="btn-ver" href="{% url 'apps.articulo:articuloDetalle' articulo.id %}">
+                        Ver artículo
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
