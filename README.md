@@ -103,6 +103,17 @@ python manage.py migrate
 
 🖼️ Views del proyecto:
 
+
+### Página de Inicio
+![Inicio del Blog](images/home-page.png)
+
+### Entrada de Blog
+![Entrada de Blog](images/blog-entry.png)
+
+### Formulario de Comentarios
+![Formulario de Comentarios](images/comments-form.png)
+
+
 ![Home del blog](./static/img/captura-home.png)
 
 ![Detalle de artículo](./static/img/captura-articulo.png)
