@@ -1,0 +1,103 @@
+.article-wrapper {
+    padding: 40px 0;
+    background: #f5f5f5;
+}
+
+/* ===== Imagen centrada ===== */
+.article-image-container {
+    max-width: 650px;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ===== Contenido ===== */
+.article-content {
+    background: #ffffff;
+    padding: 40px 45px;
+    border-radius: 16px;
+    color: #333;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.article-title {
+    font-size: 2.1rem;
+    color: #222;
+    font-weight: 700;
+}
+
+.article-meta span {
+    color: #666;
+    margin: 0 10px;
+    font-size: 0.95rem;
+}
+
+.article-summary {
+    color: #171616;
+}
+
+.article-body {
+    color: #171616;
+    line-height: 1.7;
+}
+
+/* ===== B O T O N E S ===== */
+.btn-gradient {
+    background: linear-gradient(90deg, #5f4bff, #dd86f8);
+    color: white !important;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+/* ===== Comentarios - acordeón ===== */
+.comment-accordion .accordion-button {
+    background: #858383 !important;
+    color: #0c0b0b;
+    border: none;
+}
+
+.comment-accordion .accordion-body {
+    background: #858383;
+}
+
+/* Tarjeta de comentario */
+.comment-box {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 15px;
+    border-left: 4px solid #7a5cff;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(220, 206, 206, 0.08);
+}
+
+/* ===== Formulario ===== */
+.comment-form-wrapper {
+    padding: 30px 0;
+}
+
+.comment-form-wrapper h3 {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .article-image {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-image {
+        height: 220px;
+    }
+}
