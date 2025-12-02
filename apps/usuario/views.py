@@ -75,8 +75,8 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(request, f'Usuario {self.object.username} eliminado correctamente')
         return self.delete(request, *args, **kwargs)
     
-
-class MyPasswordResetView(PasswordResetView):
+#RecuperarContra
+class RecuperarContraView(PasswordResetView):
     template_name = 'registracion/recuperarContra.html'
 
     def get_success_url(self):
