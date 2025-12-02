@@ -40,6 +40,8 @@ python manage.py migrate
 
 ▶️Luego abrir en el navegador:  http://127.0.0.1:8000/
 
+
+
 🧩 Funcionalidades principales:
 
 
@@ -66,6 +68,7 @@ python manage.py migrate
 ✔ Categorías:
 
 -Administración de categorías
+
 -Filtrado por categoría
 
 ✔ Sistema de comentarios:
