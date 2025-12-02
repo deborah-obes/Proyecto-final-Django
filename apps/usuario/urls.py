@@ -13,7 +13,10 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('usuario/', UsuarioListView.as_view(), name='listUsuario'),
 
-   # 👉 ESTA ES LA QUE USA eliminarUsuario.js
+   # 👉 eliminarUsuario.js
     path('eliminarUsuario/<int:id>/', UsuarioDeleteView.as_view(), name='eliminarUsuario'),
+   # Deshabilitar Usuario
+    path('usuario/toggle/<int:id>/', UsuarioToggleActiveView.as_view(), name='toggleUsuario'),
+
 
 ]
