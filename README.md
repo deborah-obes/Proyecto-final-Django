@@ -114,11 +114,6 @@ python manage.py migrate
 ![Formulario de Comentarios](images/comments-form.png)
 
 
-![Home del blog](./static/img/captura-home.png)
-
-![Detalle de artículo](./static/img/captura-articulo.png)
-
-
 📁 Estructura del proyecto:
 
 
