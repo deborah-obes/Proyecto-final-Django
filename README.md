@@ -111,7 +111,7 @@ python manage.py migrate
 ![Entrada de Blog](images/blog-entry.png)
 
 ### Formulario de Comentarios
-![Formulario de Comentarios](images/comments-form.png)
+![Formulario de Comentarios](images/create-form.png)
 
 
 📁 Estructura del proyecto:
