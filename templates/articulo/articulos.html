@@ -1,0 +1,79 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load colaborador_tags %}
+
+{% block title %}Artículos | Blog{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}?v=10">
+{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+
+<section class="container py-5" >
+
+    <!-- TÍTULO -->
+    <h1 class="section-title text-center">Artículos del Blog</h1>
+
+    <!-- BARRA DE ACCIONES -->
+    <div class="action-bar d-flex flex-wrap justify-content-center gap-3 mb-5">
+
+        <!-- Orden -->
+        <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=reciente">
+            🔽 Más reciente</a>
+        <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=antiguo">
+            🔼 Más antiguo</a>
+        <!-- Categorías -->
+        <a class="btn btn-orden" href="{% url 'apps.articulo:listCategoria' %}">
+            📚 Categorías</a>
+        {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
+        <!-- Crear Artículo y Categoría -->
+        <a class="btn btn-orden" href="{% url 'apps.articulo:crearArticulo' %}">
+            ➕ Crear artículo
+        </a>
+
+        <a class="btn btn-orden" href="{% url 'apps.articulo:crearCategoria' %}">
+            📂 Nueva categoría
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- LISTADO DE ARTÍCULOS -->
+    <div class="row g-4" >
+        {% for articulo in articulos %}
+        <div class="col-12 col-md-4">
+
+            <div class="art-card p-4 text-center">
+
+                <!-- Imagen -->
+                <img src="{{ articulo.imagen.url }}" 
+                     class="art-img mb-3" 
+                     alt="Imagen del artículo">
+
+                <!-- Título -->
+                <h3 class="art-title">{{ articulo.titulo|capfirst }}</h3>
+
+                <!-- Fecha -->
+                <p class="art-date">Publicado: {{ articulo.fecha_publicacion }}</p>
+
+                <!-- Resumen -->
+                <p class="art-summary">{{ articulo.resumen }}</p>
+
+                <!-- Botón -->
+                <a class="btn btn-read mt-2" href="{% url 'apps.articulo:articuloDetalle' articulo.id %}">
+                    Leer más
+                </a>
+
+            </div>
+
+        </div>
+        {% empty %}
+        <p class="text-center text-light fs-5">Todavía no hay artículos publicados.</p>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}
