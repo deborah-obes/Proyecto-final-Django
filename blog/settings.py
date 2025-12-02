@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Utilizar mi usuario
+AUTH_USER_MODEL    ='usuario.Usuario'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL= '/'
+
 
 # Application definition
 
@@ -38,9 +44,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "apps.articulo",
+    'apps.articulo',
+    'apps.usuario',
+    'apps.comentario',
+    'apps.contacto',
+
+    "crispy_forms",
+    "crispy_bootstrap5",
 
 ]
+
+# Crispy
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

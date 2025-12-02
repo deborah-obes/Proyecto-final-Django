@@ -1,0 +1,99 @@
+/* --------------------------------------------
+   TÍTULO
+-------------------------------------------- */
+.section-title {
+    color: #0d0d0d;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+}
+
+/* --------------------------------------------
+   BOTONES DE ORDEN (clase btn-orden)
+-------------------------------------------- */
+.btn-orden {
+    background: #181818;
+    color: #d6d6d6;
+    padding: 8px 18px;
+    border-radius: 22px;
+    font-weight: 600;
+    border: 1px solid #2d2d2d;
+    transition: .2s ease-in-out;
+    text-decoration: none;
+}
+
+.btn-orden:hover {
+    background: #292929;
+    color: #ffffff;
+    border-color: #444;
+}
+
+/* --------------------------------------------
+   TARJETA DE ARTÍCULO
+-------------------------------------------- */
+.art-card {
+    background: #101010;
+    border-radius: 18px;
+    border: 1px solid #2b2b2b;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.art-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.55);
+}
+
+.art-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+.art-card:hover .art-img {
+    transform: scale(1.05);
+}
+
+.art-title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.art-date {
+    color: #9f9f9f;
+    font-size: 0.85rem;
+    margin: 8px 0;
+}
+
+.art-summary {
+    color: #cecece;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+    min-height: 70px;
+}
+
+/* --------------------------------------------
+   BOTÓN LEER MÁS
+-------------------------------------------- */
+.btn-read {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: .25s ease-in-out;
+}
+
+.btn-read:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
