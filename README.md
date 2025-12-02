@@ -6,12 +6,19 @@ El objetivo del proyecto es ofrecer un espacio dinámico donde compartir noticia
 🚀 Tecnologías utilizadas
 
 -Python 3.x
+
 -Django 5.x
+
 -HTML5 / CSS3
+
 -Bootstrap
+
 -SQLite3 (por defecto)
+
 -Crispy Forms + Bootstrap5
+
 -Pillow (para manejo de imágenes)
+
 
 📦 Instalación
 
@@ -45,44 +52,71 @@ python manage.py createsuperuser
 
 🧩 Funcionalidades principales:
 
+
 ✔ Gestión de usuarios:
+
 -Registro
+
 -Inicio de sesión
+
 -CRUD de usuarios
+
 -Roles básicos
 
+
 ✔ Blog:
+
 -Listado de artículos
+
 -Detalle del artículo
+
 -Creación, edición y eliminación (según permisos)
 
+
 ✔ Categorías:
+
 -Administración de categorías
 -Filtrado por categoría
 
 ✔ Sistema de comentarios:
+
 -Agregar comentarios por artículo
+
 -Gestión desde el panel administrador
 
+
 ✔ Páginas informativas:
+
 -Inicio
+
 -About / Nosotros
+
 -Contacto
 
+
 ✔ Formularios personalizados:
+
 -Uso de Django Forms y Crispy Forms
+
 -Validaciones y mensajes
 
+
 ✔ Interfaz intuitiva:
+
 -Diseño simple y tradicional, orientado a la lectura
+
 -Navegación clara y jerarquizada
+
 
 🖼️ Capturas del proyecto:
 
 ![Home del blog](./static/img/captura-home.png)
+
 ![Detalle de artículo](./static/img/captura-articulo.png)
 
+
 📁 Estructura del proyecto:
+
 
 Proyecto-final-Django/
 │
