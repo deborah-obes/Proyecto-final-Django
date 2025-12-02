@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<title>{% block title %} Registro de usuario {% endblock title %}</title>
+{% block hero_section %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+     <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Iniciar sesión</h1>
+        <p>
+            A continuación ingresa tus credenciales.
+        </p>
+    </div>
+    <div class="row py-5">
+        <form action="" class="col-md-9 m-auto" method="POST" role="form">
+            {% csrf_token %}
+            <div class="row">
+
+                {{ form | crispy }}
+
+            </div>
+
+            <div class="row">
+
+                 <!-- Botón centrado -->
+                <div class="col-12 text-center mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-4">
+                        Iniciar sesión
+                    </button>
+                </div>
+                
+                 <!-- Contenedor de enlaces (lado a lado) -->
+                <div class="col-12 d-flex justify-content-center gap-4 mt-3">
+                    <a class="link-login" href="{% url 'apps.usuario:registrar' %}?next={{ request.GET.next }}">¿Todavía no está registrado?<br>Registrate</a>
+                    <a class="link-login" href="{% url 'apps.usuario:password_reset' %}">¿Olvidaste tu contraseña?<br>Recuperar</a>
+                </div>
+              
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

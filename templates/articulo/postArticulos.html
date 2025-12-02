@@ -1,0 +1,148 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load colaborador_tags %}
+{% load crispy_forms_tags %}
+
+{% block title %}Artículo: {{ articulo.titulo|capfirst }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/postArticulo.css' %}?v=10">
+{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="container py-5">
+        <!-- ===== IMAGEN CENTRADA ===== -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="article-image-container">
+                    {% if articulo.imagen %}
+                        <img src="{{ articulo.imagen.url }}" class="article-image" alt="{{ articulo.titulo }}">
+                    {% else %}
+                        <img src="{% static 'assets/img/banner_img_01.jpg' %}" class="article-image" alt="">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CONTENIDO ===== -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8">
+                <div class="article-content">
+
+                    <h1 class="article-title text-center">{{ articulo.titulo|capfirst }}</h1>
+
+                    <div class="article-meta text-center">
+                        <span>📅 {{ articulo.fecha_publicacion }}</span>
+                        <span>📂 {{ articulo.categoria|capfirst }}</span>
+                    </div>
+
+                    <p class="article-summary">{{ articulo.resumen }}</p>
+
+                    <hr>
+
+                    <div class="article-body">
+                        {{ articulo.contenido|safe }}
+                    </div>
+
+                    <!-- ACCIONES -->
+                    <div class="article-actions mt-4 text-center">
+                        <a class="btn btn-gradient" href="#comentario">💬 Comentar</a>
+
+                        {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+                            <a href="{% url 'apps.articulo:editarArticulo' articulo.pk %}" 
+                               class="btn btn-outline-primary">Editar</a>
+
+                            <a class="btn btn-outline-danger eliminar-articulo-btn"
+                               data-url="{% url 'apps.articulo:eliminarArticulo' articulo.pk %}">
+                                Eliminar
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= ACORDEÓN DE COMENTARIOS ======================= -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-8">
+
+                <div class="accordion" id="accordionComentarios">
+
+                    <div class="accordion-item comment-accordion">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseComentarios">
+                                💬 Comentarios ({{ comentarios.count }})
+                            </button>
+                        </h2>
+
+                        <div id="collapseComentarios" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+
+                                {% for comentario in comentarios %}
+                                    <div class="comment-box">
+
+                                        <div class="comment-header">
+                                            <strong>{{ comentario.usuario }}</strong>
+                                            <span>{{ comentario.fecha|date:"d/m/Y H:i" }}</span>
+                                        </div>
+
+                                        <p class="comment-text">{{ comentario.texto }}</p>
+
+                                        {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+                                            <div class="comment-actions">
+                                                <button class="btn btn-sm btn-danger eliminar-comentario-btn"
+                                                    data-url="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
+                                                    Eliminar
+                                                </button>
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                {% empty %}
+                                    <p class="text-center text-muted">No hay comentarios aún.</p>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="comment-form-wrapper mt-5">
+            <a id="comentario"></a>
+
+            <div class="col-md-6 m-auto text-center">
+                <h3 class="mb-3">Deja tu comentario</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if user.is_authenticated %}
+                        {{ form|crispy }}
+                        <button class="btn btn-gradient mt-3" type="submit">Enviar comentario</button>
+                    {% else %}
+                        <p>Debes iniciar sesión para comentar.</p>
+                        <a class="btn btn-gradient" 
+                            href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">
+                            Iniciar sesión
+                        </a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
