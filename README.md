@@ -17,8 +17,7 @@ El objetivo del proyecto es ofrecer un espacio dinámico donde compartir noticia
 
 1. Clonar el repositorio:
 
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone: https://github.com/deborah-obes/Proyecto-final-Django.git
 
 2. Crear y activar el entorno virtual:
 
