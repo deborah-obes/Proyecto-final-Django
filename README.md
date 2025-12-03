@@ -190,13 +190,20 @@ Proyecto-final-Django/
 └── db.sqlite3
 
 
-🤝 Proyecto Final desarrollado por Comision#8 / Grupo#4 - Colaboradores:
+🌐 INFORMATORIO 2025 - 2da Etapa del INFO: Desarrollo Web.
+- Profesor: Diego Vargas
+- Mentor: Darian Alexis Hiebl
+  
+⚡Proyecto Final desarrollado por Comision#8 / Grupo#4 -
+
+🤝Colaboradores:
 
 - Brenda Torres
 - Deborah Obes
 - Marianela Cardozo
 - Mathias Arguello
 - Felipe Chorvalat
+
 
 📜 Licencia
 
