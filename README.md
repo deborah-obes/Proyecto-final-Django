@@ -186,8 +186,6 @@ Proyecto-final-Django/
 - Brenda Torres
 - Deborah Obes
 - Marianela Cardozo
-- Mathias Arguello
-- Felipe Chorvalat
 
 
 ## 📜 Licencia
