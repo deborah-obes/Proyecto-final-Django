@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import View, DeleteView
+from django.views.generic import View, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Comentario
 from .forms import ComentarioForm
 from apps.articulo.models import Articulo
@@ -79,3 +79,15 @@ class DetalleArticuloView(View):
         articulo = Articulo.objects.get(id=articulo_id)
         comentarios = Comentario.objects.filter(articulo=articulo)
         return render(request, 'detalleArticulo.html', {'articulo': articulo, 'comentarios': comentarios})
+
+# Editar Comentarios
+class ComentarioUpdateView(LoginRequiredMixin, UpdateView):
+    model = Comentario
+    form_class = ComentarioForm
+    template_name = 'comentario/comentar.html' 
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'apps.articulo:articuloDetalle',
+            kwargs={'id': self.object.articulo_id}
+        )
